@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Company Expenses Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1> Expenses Tracker System</h1>
+</header>
+<main>
+  <section id="role-selection-section">
+    <h2>Select Your Role</h2>
+    <select id="role-select">
+      <option value="">-- Select Role --</option>
+      <option value="handler">Handler (Worker Details)</option>
+      <option value="accountant">Accountant (Money Requests)</option>
+      <option value="manager">Manager (Approve Requests)</option>
+    </select>
+  </section>
+
+  <section id="handler-section" class="hidden">
+    <h2>Worker & Unit Management</h2>
+    <form id="worker-form">
+      <label for="unit-name">Unit Name</label>
+      <input type="text" id="unit-name" required placeholder="e.g. Engineering, Sales" />
+      
+      <label for="num-members">Number of Members Working</label>
+      <input type="number" id="num-members" min="1" required />
+      
+      <label for="work-completed">Work Completed (%)</label>
+      <input type="number" id="work-completed" min="0" max="100" required />
+      
+      <label for="work-pending">Work Pending (%)</label>
+      <input type="number" id="work-pending" min="0" max="100" required />
+      
+      <label for="pending-reason">Reason for Pending Work</label>
+      <textarea id="pending-reason" rows="2" placeholder="Provide reason if any work is pending"></textarea>
+      
+      <button type="submit">Add / Update Unit</button>
+    </form>
+    <div id="worker-error" class="error"></div>
+    <h3>Current Units & Work Details</h3>
+    <table id="units-table">
+      <thead>
+        <tr>
+          <th>Unit Name</th>
+          <th>Members</th>
+          <th>Work Completed (%)</th>
+          <th>Work Pending (%)</th>
+          <th>Reason for Pending</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Units will be listed here -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="accountant-section" class="hidden">
+    <h2>Money Request Submission</h2>
+    <form id="request-form">
+      <label for="request-unit">Unit</label>
+      <select id="request-unit" required>
+        <!-- Unit options -->
+      </select>
+      <label for="request-amount">Amount Requested ($)</label>
+      <input type="number" id="request-amount" min="1" required />
+      <label for="request-reason">Reason for Request</label>
+      <textarea id="request-reason" rows="3" required placeholder="Explain what the money is for"></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+    <div id="request-error" class="error"></div>
+    <h3>My Requests (Pending or Approved)</h3>
+    <table id="my-requests-table">
+      <thead>
+        <tr>
+          <th>Request ID</th>
+          <th>Unit</th>
+          <th>Amount ($)</th>
+          <th>Reason</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Accountant requests will appear here -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="manager-section" class="hidden">
+    <h2>Money Request Approval</h2>
+    <h3>Pending Requests</h3>
+    <table id="approval-requests-table">
+      <thead>
+        <tr>
+          <th>Request ID</th>
+          <th>Unit</th>
+          <th>Amount ($)</th>
+          <th>Reason</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Pending requests to approve -->
+      </tbody>
+    </table>
+    <h3>All Requests History</h3>
+    <table id="all-requests-table">
+      <thead>
+        <tr>
+          <th>Request ID</th>
+          <th>Unit</th>
+          <th>Amount ($)</th>
+          <th>Reason</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- All requests -->
+      </tbody>
+    </table>
+  </section>
+
+  <nav>
+    <button id="logout-btn" class="hidden">Change Role / Logout</button>
+  </nav>
+
+  
+</main>
+<script src="script.js"></script>
+</body>
+</html>
+
